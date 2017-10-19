@@ -1,27 +1,24 @@
 <template>
-	<div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
+	<div class="app-wrapper" :class="{hideSidebar:false}" >
 		<sidebar class="sidebar-container"></sidebar>
-		<!--<div class="main-container">
-			<navbar></navbar>
+		<div class="main-container">
+			<!--<navbar></navbar>-->
 			<app-main></app-main>
-		</div>-->
+		</div>
 	</div>
 </template>
 
 <script>
-// import { Navbar, Sidebar, AppMain } from 'pages/layout';
-
+import { AppMain, Sidebar } from './index';
 export default {
     name: 'layout',
-    // components: {
-    //     Navbar,
-    //     Sidebar,
-    //     AppMain
-    // },
-    computed: {      
-        sidebar () {
-            return this.$store.state.app.sidebar;
-        }
+    components: {
+      //  Navbar,
+        Sidebar,
+        AppMain
+    },
+    computed: {       
+        
     }
 };
 </script> 

@@ -1,9 +1,9 @@
 // in development env not use Lazy Loading,because Lazy Loading too many pages will cause webpack hot update too slow.so only in production use Lazy Loading
 const _import = require('./_import_' + process.env.NODE_ENV);
+const Login = _import('login/index');
 
 /* layout */
-import Layout from '@/pages/layout/Layout';
-
+import Layout from '@/pages/layout/Layout.vue';
 /**
 * icon : the icon show in the sidebar
 * hidden : if `hidden:true` will not show in the sidebar
@@ -12,19 +12,21 @@ import Layout from '@/pages/layout/Layout';
 * meta : { role: ['admin'] }  will control the page role
 **/
 export const constantRouterMap = [
-    { path: '/login', component: _import('login/index'), hidden: true }
-    // {
-    //     path: '/',
-    //     component: Layout,
-    //     redirect: '/index',
-    //     name: '首页',
-    //     hidden: true,
-    //     children: [{ path: 'index', component: _import('index/index') }]
-    // }   
+    { path: '/login', component: Login, name: 'login', hidden: true }
+    
 ]; 
 
-// export const asyncRouterMap = [
-//     {
+export const asyncRouterMap = [
+    {
+        path: '',
+        component: Layout,
+        redirect: '/index',
+        name: '首页',
+        noDropdown: true,
+        children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
+    }    
+]; 
+// {
 //         path: '/report',
 //         component: Layout,
 //         redirect: 'noredirect',
@@ -45,4 +47,3 @@ export const constantRouterMap = [
 //             ]      
 //         }]
 //     }
-// ]; 

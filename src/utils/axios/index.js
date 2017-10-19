@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import Interceptor from './interceptor';
-import {state} from '@/store';
+import store from '@/store';
 // 初始化拦截器
 let interceptor = new Interceptor();
 interceptor.init();
@@ -20,8 +20,8 @@ let Http = async (url, data = {}, type = 'post') => {
         'Content-Type': 'application/json',
         'apiName': url
     };
-        // 添加header token
-    let token = state.userInfo ? state.userInfo.token : '';
+    // 添加header token
+    let token = store.state.user.userInfo ? store.state.user.userInfo.token : ''; // vuex组件模块化,暂时无法直接获取state的方法
     if (token) {
         headers = Object.assign(headers, {'jtoken': token});
     }

@@ -190,7 +190,7 @@ export default {
         },
         // 获取供应商/客户 数据
         init_charts_supplier_hospital () {
-            this.Http.post(URL.SUPPLIER_HOSPITAL_COUNT, {
+            this.Http(URL.SUPPLIER_HOSPITAL_COUNT, {
                 params: {}
             }).then((msg) => {
                 let name = ['审核不通过', '待审核', '审核通过', '未提交'];
@@ -204,7 +204,7 @@ export default {
         },
         // 获取产品数据
         init_charts_product () {
-            this.Http.post(URL.PRODUCT_COUNT, {
+            this.Http(URL.PRODUCT_COUNT, {
                 params: {}
             }).then(msg => {
                 this.charts_product = echarts.init(this.$refs.charts_product); // 初始化echarts
@@ -218,7 +218,7 @@ export default {
         },
          // 获取采购金额报表数据
         init_charts_money () {
-            this.Http.post(URL.MONEY_COUNT, {
+            this.Http(URL.MONEY_COUNT, {
                 params: {}
             }).then(msg => {
                 this.charts_money = echarts.init(this.$refs.charts_money); // 初始化echarts
@@ -237,7 +237,7 @@ export default {
         },
         // 订单统计
         async init_order () {
-            await this.Http.post(URL.ORDER_COUNT, {
+            await this.Http(URL.ORDER_COUNT, {
                 params: {}
             }).then(msg => {
                 for (let item in msg.data) {

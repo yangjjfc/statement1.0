@@ -2,6 +2,7 @@ import { CHANGEUSER, REFRESH, CLEARSTATE, HEIGHTRESIZE, GETROLES, DEFAULTOPEN } 
 import Http from '@/utils/axios';
 const user = {
     state: {
+        userInfo: null, // 用户信息
         roles: null, // 用户权限
         routers: null // 路由
     },
@@ -48,7 +49,7 @@ const user = {
         // 登录
         login (context, data) {
             return new Promise((resolve, reject) => {
-                Http.post('login', data).then(result => {
+                Http('login', data).then(result => {
                     let userinfo = result || {};
                     if (userinfo.data) {
                         context.commit('CHANGEUSER', userinfo.data);
@@ -71,14 +72,13 @@ const user = {
         currentUser ({ commit, state }) {
             return new Promise((resolve, reject) => {
                 state.userInfo && state.userInfo.enterpriseNo ? resolve(state.userInfo) // 判断是否需要去请求
-                    : Http.post('currentUser', {
+                    : Http('currentUser', {
                         token: state.userInfo ? state.userInfo.token : ''
                     }).then(result => {
                         // 获取token 获取登录信息
                         let user = result.data || {};
                         commit('CHANGEUSER', user);
                         resolve(user);
-                        //  user.loginUrl = state.userInfo && state.userInfo.loginUrl;
                     }, err => {
                         reject(err);
                     });
@@ -93,7 +93,7 @@ const user = {
         // 获取用户权限
         getroles ({ commit, state }) {
             return new Promise((resolve, reject) => {
-                state.roles ? resolve(state.roles) : Http.post('ypt.user.findRightsByUserNoAndAppRole', {
+                state.roles ? resolve(state.roles) : Http('ypt.user.findRightsByUserNoAndAppRole', {
                     userNo: state.userInfo.userNo,
                     appCode: 'YSCM',
                     appRole: ''

@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import axios from './utils/axios/';
 import {router} from './router/r-config.js';
+import store from './store';
 // import './errorLog';// error log 
 import dailog from '@/components/Dailog'; // 弹框组件
  
@@ -17,11 +18,11 @@ Vue.config.productionTip = false; // 设置为 false 以阻止 vue 在启动时�
 
 // 全局组件
 Vue.component('dailog', dailog);
-
 /* eslint-disable no-new */
 new Vue({ // eslint-disable-line no-new
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: { App } 
 });

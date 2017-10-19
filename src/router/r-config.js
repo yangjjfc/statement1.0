@@ -11,11 +11,10 @@ import store from '@/store/index';
  */
 Vue.use(VueRouter);
 const router = new VueRouter({
-    constantRouterMap,
+    routes: constantRouterMap,
     mode: 'history',
     strict: process.env.NODE_ENV !== 'production'
 });
-
 // permissiom judge
 function hasPermission (roles, permissionRoles) {
     if (roles.indexOf('admin') >= 0) return true; // admin权限 直接通过
@@ -30,14 +29,14 @@ router.beforeEach((to, from, next) => {
             next(); 
         });    
     } else {
-        if (!store.state.roles) { // 判断当前用户是否已拉取完user_info信息
+        if (!store.getters.roles) { // 判断当前用户是否已拉取完user_info信息
             store.dispatch('getInfo').then(() => {
                 // 权限不存在,获取权限
                 store.dispatch('getroles').then(res => {
-                    store.dispatch('generateRouters', res).then(() => {
+                    store.dispatch('generateRouters', res).then((res) => {
                         // 路由长度
-                        if (store.state.routers.length) {
-                            router.addRoutes([store.state.routers]); // 必须是数组,动态添加可访问路由表
+                        if (res.length) {
+                            router.addRoutes(res); // 必须是数组,动态添加可访问路由表
                             next({ ...to });// hack方法 确保addRoutes已完成
                         } else {
                             next('/login');

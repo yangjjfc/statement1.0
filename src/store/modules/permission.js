@@ -40,24 +40,18 @@ const permission = {
     mutations: {
         // 设置路由
         [SET_ROUTERS] (state, routers) {
-            sessionStorage.setItem('route', JSON.stringify(routers));
             state.addRouters = routers;
-            state.routers = constantRouterMap.concat(routers);  
+            state.routers = constantRouterMap.concat(routers); // 保存全部路由  
+            sessionStorage.setItem('route', JSON.stringify(state.routers));
         }   
     },
     actions: {
          // 生成路由
-        async generateRouters ({commit, state}, data) {
+        async generateRouters ({commit, state}, roles) {
             return new Promise(resolve => {
-                const { roles } = data;
-                let accessedRouters;
-                if (roles.indexOf('admin') >= 0) {
-                    accessedRouters = asyncRouterMap;
-                } else {
-                    accessedRouters = filterAsyncRouter(asyncRouterMap, roles);
-                }
+                let accessedRouters = filterAsyncRouter(asyncRouterMap, roles);
                 commit('SET_ROUTERS', accessedRouters);
-                resolve();
+                resolve(accessedRouters);
             });    
         }        
     } 

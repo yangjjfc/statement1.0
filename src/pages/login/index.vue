@@ -34,7 +34,7 @@
     </div>
 </template>
 <script type="text/javascript">
-import { mapState, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import {encryption} from '~/global.common.js';
 const URL = {
     VERIFY_CODE: '/verifyCode'
@@ -52,7 +52,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['userInfo'])
+        ...mapGetters(['userInfo'])
     },
     methods: {
         ...mapActions({
@@ -103,7 +103,7 @@ export default {
             });
             if (!xflag) {
                 this.userLogin(param).then(msg => {
-                    this.$router.push('dashboard/index');
+                    this.$router.push('/');
                 }, err => {
                     // 记录错误信息
                     this.errorMsg = err.message;
