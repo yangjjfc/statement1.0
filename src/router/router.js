@@ -1,7 +1,7 @@
 // in development env not use Lazy Loading,because Lazy Loading too many pages will cause webpack hot update too slow.so only in production use Lazy Loading
 const _import = require('./_import_' + process.env.NODE_ENV);
-const Login = _import('login/index');
-
+// const aaa = _import('chart/supplier/SupplierChart');
+// console.log(aaa);
 /* layout */
 import Layout from '@/pages/layout/Layout.vue';
 /**
@@ -12,7 +12,7 @@ import Layout from '@/pages/layout/Layout.vue';
 * meta : { role: ['admin'] }  will control the page role
 **/
 export const constantRouterMap = [
-    { path: '/login', component: Login, name: 'login', hidden: true }
+    { path: '/login', component: _import('login/index'), name: 'login', hidden: true }
     
 ]; 
 
@@ -24,26 +24,23 @@ export const asyncRouterMap = [
         name: '首页',
         noDropdown: true,
         children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
-    }    
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    }
 ]; 
-// {
-//         path: '/report',
-//         component: Layout,
-//         redirect: 'noredirect',
-//         name: '权限测试',
-//         icon: 'lock',
-//         meta: { role: ['admin'] },
-//         children: [{
-//             path: '/example/table',
-//             component: _import('example/table/index'),
-//             redirect: '/example/table/table',
-//             name: 'Table',
-//             icon: 'table',
-//             children: [
-//                 { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
-//                 { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
-//                 { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
-//                 { path: 'table', component: _import('example/table/table'), name: '综合table' }
-//             ]      
-//         }]
-//     }

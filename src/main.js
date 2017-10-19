@@ -9,6 +9,7 @@ import {router} from './router/r-config.js';
 import store from './store';
 // import './errorLog';// error log 
 import dailog from '@/components/Dailog'; // 弹框组件
+import pagination from '@/components/Pagination'; // 弹框组件
  
 // 全局指令 
 Vue.use(ElementUI);
@@ -18,6 +19,7 @@ Vue.config.productionTip = false; // 设置为 false 以阻止 vue 在启动时�
 
 // 全局组件
 Vue.component('dailog', dailog);
+Vue.component('pagination', pagination);
 /* eslint-disable no-new */
 new Vue({ // eslint-disable-line no-new
     el: '#app',

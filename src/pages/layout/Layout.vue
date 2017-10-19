@@ -1,5 +1,6 @@
 <template>
 	<div class="app-wrapper" :class="{hideSidebar:false}" >
+		<level-header></level-header>
 		<sidebar class="sidebar-container"></sidebar>
 		<div class="main-container">
 			<!--<navbar></navbar>-->
@@ -9,11 +10,11 @@
 </template>
 
 <script>
-import { AppMain, Sidebar } from './index';
+import { LevelHeader, AppMain, Sidebar } from './index';
 export default {
     name: 'layout',
     components: {
-      //  Navbar,
+        LevelHeader,
         Sidebar,
         AppMain
     },
@@ -42,7 +43,7 @@ export default {
 			width: 180px;
 			height: 100%;
 			position: fixed;
-			top: 0;
+			top: 50px;
 			bottom: 0;
 			left: 0;
 			z-index: 1001;
