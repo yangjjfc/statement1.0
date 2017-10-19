@@ -14,6 +14,9 @@ export default {
 
 <style lang="scss">
 @import './style/common';
+#app{
+  height: 100%;
+}
 .router-fade-enter-active,
 .router-fade-leave-active {
   transition: opacity .3s;

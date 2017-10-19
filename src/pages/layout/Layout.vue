@@ -1,22 +1,25 @@
 <template>
 	<div class="app-wrapper" :class="{hideSidebar:false}" >
 		<level-header></level-header>
-		<sidebar class="sidebar-container"></sidebar>
-		<div class="main-container">
-			<!--<navbar></navbar>-->
-			<app-main></app-main>
-		</div>
+			<sidebar class="sidebar-container"></sidebar>
+			<div class="main-container">
+				<div class="mian-top">
+					<Levelbar></Levelbar>
+				</div>
+				<app-main></app-main>
+			</div>
 	</div>
 </template>
 
 <script>
-import { LevelHeader, AppMain, Sidebar } from './index';
+import { Levelbar, LevelHeader, AppMain, Sidebar } from './index';
 export default {
     name: 'layout',
     components: {
         LevelHeader,
         Sidebar,
-        AppMain
+        AppMain,
+        Levelbar
     },
     computed: {       
         
@@ -35,7 +38,7 @@ export default {
 				overflow: inherit;
 			}
 			.main-container {
-				margin-left: 36px;
+				left: 36px;
 			}
 		}
 		.sidebar-container {
@@ -50,10 +53,20 @@ export default {
 			overflow-y: auto;
  			&::-webkit-scrollbar {display:none}
 		}
+		.mian-top{
+			height: 50px;
+			line-height: 50px;
+			background-color: #eef1f6;
+		}
 		.main-container {
 			min-height: 100%;
-			transition: margin-left 0.28s ease-out;
-			margin-left: 180px;
+			transition: left 0.28s ease-out;
+			position: fixed;
+			top:50px;
+			left:180px;
+			bottom:0;
+			right: 0;
+			overflow-y:auto;
 		}
 	}
 </style>

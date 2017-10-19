@@ -42,5 +42,161 @@ export const asyncRouterMap = [
             name: '客户销售',
             icon: 'table'
         }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table',
+            children: [{
+                path: 'supplierchart',
+                component: _import('chart/supplier/index'),
+                name: '供应商销售',
+                icon: 'table'
+            
+            }, {
+                path: 'hospitalchart',
+                component: _import('chart/supplier/index'),
+                name: '客户销售',
+                icon: 'table'
+            }]    
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }] 
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
+    },    
+    {
+        path: '/chart',
+        component: Layout,
+        redirect: 'noredirect',
+        name: '表格',
+        icon: 'lock',
+        children: [{
+            path: 'supplierchart',
+            component: _import('chart/supplier/index'),
+            name: '供应商销售',
+            icon: 'table'
+        }, {
+            path: 'hospitalchart',
+            component: _import('chart/supplier/index'),
+            name: '客户销售',
+            icon: 'table'
+        }]
     }
 ]; 
