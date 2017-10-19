@@ -7,7 +7,7 @@
             <el-col :span="4" class="userinfo">
                 <el-dropdown trigger="hover">
                     <span class="el-dropdown-link userinfo-inner">
-                        <img :src="this.sysUserAvatar" /> {{sysUserName}}
+                        <img :src="sysUserAvatar" /> {{sysUserName}}
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>我的消息</el-dropdown-item>
@@ -48,7 +48,7 @@ export default {
         }
     },
     mounted () { 
-        this.sysUserName = this.states.userInfo.userName;
+        this.sysUserName = this.$store.getter.userInfo.userName;
         this.sysUserAvatar = 'http://dfs.test.cloudyigou.com/dfs/s2/M00/25/39/rB4r9Vk3mwWAdctcAAFf5pjzdHU212_100x100.jpg';
     }
 
