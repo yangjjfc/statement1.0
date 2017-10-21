@@ -14,21 +14,21 @@ import Layout from '@/pages/layout/Layout.vue';
 export const constantRouterMap = [
     { path: '/login', component: _import('login/index'), name: 'login', hidden: true },
     {
-        name: '首页',
-        icon: 'icon',
-        noDropdown: true,
-        children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
+        path: '/virtual',
+        name: '缩起菜单',
+        icon: 'zengjiasuojinliang',
+        virtual: true
     }
     
 ]; 
 
 export const asyncRouterMap = [
     {
-        path: '/',
+        path: '',
         component: Layout,
         redirect: '/index',
         name: '首页',
-        icon: 'icon',
+        icon: 'index',
         noDropdown: true,
         children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
     },    
@@ -41,13 +41,11 @@ export const asyncRouterMap = [
         children: [{
             path: 'supplierchart',
             component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
+            name: '供应商销售'
         }, {
             path: 'hospitalchart',
             component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
+            name: '客户销售'
         }]
     }
 ]; 

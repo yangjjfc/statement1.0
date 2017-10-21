@@ -1,5 +1,5 @@
 <template>
-	<div class="app-wrapper" :class="{hideSidebar:false}" >
+	<div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}" >
 		<level-header></level-header>
 		<sidebar class="sidebar-container"></sidebar>
 		<div class="main-container">
@@ -19,10 +19,12 @@ export default {
         LevelHeader,
         Sidebar,
         AppMain,
-        Levelbar
+        Levelbar 
     },
     computed: {       
-        
+        sidebar () {
+            return this.$store.state.app.sidebar;
+        }
     }
 };
 </script> 

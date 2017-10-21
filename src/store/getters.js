@@ -6,5 +6,6 @@ export default {
     clientid: (state) => state.userInfo && state.userInfo.clientId,
     loginAccount: (state) => state.userInfo && state.userInfo.loginAccount,
     routers: state => state.permission.routers,
-    roles: (state) => state.user.roles
+    roles: (state) => state.user.roles,
+    sidebar: state => state.app.sidebar
 };
