@@ -1,13 +1,13 @@
 <template>
 	<div class="app-wrapper" :class="{hideSidebar:false}" >
 		<level-header></level-header>
-			<sidebar class="sidebar-container"></sidebar>
-			<div class="main-container">
-				<div class="mian-top">
-					<Levelbar></Levelbar>
-				</div>
-				<app-main></app-main>
+		<sidebar class="sidebar-container"></sidebar>
+		<div class="main-container">
+			<div class="mian-nav">
+				<Levelbar></Levelbar>
 			</div>
+			<app-main></app-main>
+		</div>
 	</div>
 </template>
 
@@ -53,15 +53,16 @@ export default {
 			overflow-y: auto;
  			&::-webkit-scrollbar {display:none}
 		}
-		.mian-top{
+		.mian-nav{
 			height: 50px;
 			line-height: 50px;
 			background-color: #eef1f6;
+			margin-bottom: 10px;
+    		border-bottom: 1px solid #ccc;
 		}
 		.main-container {
-			min-height: 100%;
 			transition: left 0.28s ease-out;
-			position: fixed;
+			position: absolute;
 			top:50px;
 			left:180px;
 			bottom:0;

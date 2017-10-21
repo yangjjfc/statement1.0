@@ -25,7 +25,6 @@ let Http = async (url, data = {}, type = 'post') => {
     if (token) {
         headers = Object.assign(headers, {'jtoken': token});
     }
-        
     let config = {
         url: url,
         method: type,

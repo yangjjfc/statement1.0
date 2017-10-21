@@ -1,9 +1,9 @@
 <template>
-	<section class="app-main" style="min-height: 100%">
-		<transition name="fade" mode="out-in">
-			<router-view :key="key"></router-view>
-		</transition>
-	</section>
+    <section class="app-main">
+        <transition name="fade" mode="out-in">
+            <router-view :key="key"></router-view>
+        </transition>
+    </section>
 </template>
 
 <script>
@@ -17,3 +17,10 @@ export default {
 };
 </script>
      
+<style rel="stylesheet/scss" lang="scss" scoped>
+.app-main {
+    padding: 0 10px 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+</style>

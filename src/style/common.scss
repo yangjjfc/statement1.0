@@ -1,5 +1,6 @@
 @import './mixin.scss';
 @import './element-ui.scss';
+@import './sidebar.scss';
 body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption {
     padding: 0;
     margin: 0;
@@ -196,6 +197,13 @@ td{
 }
 .grey{
     color:#999;
+}
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 /*nprogress样式修改*/
 #nprogress .bar {

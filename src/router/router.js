@@ -12,174 +12,25 @@ import Layout from '@/pages/layout/Layout.vue';
 * meta : { role: ['admin'] }  will control the page role
 **/
 export const constantRouterMap = [
-    { path: '/login', component: _import('login/index'), name: 'login', hidden: true }
+    { path: '/login', component: _import('login/index'), name: 'login', hidden: true },
+    {
+        name: '首页',
+        icon: 'icon',
+        noDropdown: true,
+        children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
+    }
     
 ]; 
 
 export const asyncRouterMap = [
     {
-        path: '',
+        path: '/',
         component: Layout,
         redirect: '/index',
         name: '首页',
+        icon: 'icon',
         noDropdown: true,
         children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table',
-            children: [{
-                path: 'supplierchart',
-                component: _import('chart/supplier/index'),
-                name: '供应商销售',
-                icon: 'table'
-            
-            }, {
-                path: 'hospitalchart',
-                component: _import('chart/supplier/index'),
-                name: '客户销售',
-                icon: 'table'
-            }]    
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }] 
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
-    },    
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售',
-            icon: 'table'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售',
-            icon: 'table'
-        }]
     },    
     {
         path: '/chart',

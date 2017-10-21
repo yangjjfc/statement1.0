@@ -16,11 +16,11 @@ const router = new VueRouter({
     strict: process.env.NODE_ENV !== 'production'
 });
 // permissiom judge
-function hasPermission (roles, permissionRoles) {
+const hasPermission = (roles, permissionRoles) => { 
     if (roles.indexOf('admin') >= 0) return true; // admin权限 直接通过
     if (!permissionRoles) return true;
     return roles.some(role => permissionRoles.indexOf(role) >= 0);
-}
+};
 
 // register global progress.
 router.beforeEach((to, from, next) => {

@@ -1,6 +1,6 @@
 <template>
     <el-row class="container">
-        <el-col :span="24" class="header" v-waves>
+        <el-col :span="24" class="header">
             <el-col :span="10" class="logo ">
                 {{sysName}}
             </el-col>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 export default {
     data () {
         return {
@@ -48,7 +48,7 @@ export default {
         }
     },
     mounted () { 
-        this.sysUserName = this.$store.getter.userInfo.userName;
+        this.sysUserName = this.$store.getters.userInfo.userName;
         this.sysUserAvatar = 'http://dfs.test.cloudyigou.com/dfs/s2/M00/25/39/rB4r9Vk3mwWAdctcAAFf5pjzdHU212_100x100.jpg';
     }
 
@@ -57,8 +57,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import '../../style/mixin.scss';
-$menuWidth: 180px;
-$menuHeight: 50px;
+
 .header {
     height: $menuHeight;
     line-height: $menuHeight;

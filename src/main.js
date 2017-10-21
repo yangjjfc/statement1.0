@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-default/index.css';
 import axios from './utils/axios/';
 import {router} from './router/r-config.js';
 import store from './store';
+import './utils/icons'; // icon
 // import './errorLog';// error log 
 import dailog from '@/components/Dailog'; // 弹框组件
 import pagination from '@/components/Pagination'; // 弹框组件

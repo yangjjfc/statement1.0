@@ -6,20 +6,20 @@ import { asyncRouterMap, constantRouterMap } from '@/router/router';
  * @param roles
  * @param route
  */
-function hasPermission (roles, route) {
+const hasPermission = (roles, route) => {
     if (route.meta && route.meta.role) {
         return roles.indexOf(route.meta.role) > 0;
     } else {
         return true;
     }
-}  
+};  
 
 /**
  * 递归过滤异步路由表，返回符合用户角色权限的路由表
  * @param asyncRouterMap
  * @param roles
  */
-function filterAsyncRouter (asyncRouterMap, roles) {
+const filterAsyncRouter = (asyncRouterMap, roles) => {
     const accessedRouters = asyncRouterMap.filter(route => {
         if (hasPermission(roles, route)) {
             if (route.children && route.children.length) {
@@ -30,7 +30,7 @@ function filterAsyncRouter (asyncRouterMap, roles) {
         return false;
     });
     return accessedRouters;
-}     
+};     
 
 const permission = {
     state: {

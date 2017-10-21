@@ -8,7 +8,6 @@ import { Notification } from 'element-ui';
 class Interceptor {
     constructor () {
         this.req = {};// 防止同个链接连续请求
-        this.urlGuid = '';
     }
     getParams (obj) {    
         var result = [],
@@ -37,16 +36,16 @@ class Interceptor {
             return result.join('&');
         };
         axios.interceptors.request.use((request) => {
-            this.urlGuid = request.url + '?' + this.getParams(request.data); // 防止同个链接连续请求
+            request.urlGuid = request.url + '?' + this.getParams(request.data); // 防止同个链接连续请求
             // 本地
             if (process.env.DEV_MODE === 0) {
                 request.method = 'GET';
                 request.url = 'static/data/' + request.url + '.json?' + getParams(request.data || {});
             // 线上
-            } else if (process.env.DEV_MODE === 1 && request.method.toLowerCase() === 'post' && !this.req[this.urlGuid]) {
+            } else if (process.env.DEV_MODE === 1 && request.method.toLowerCase() === 'post' && !this.req[request.urlGuid]) {
                 request.url = '/gateway/' + (request.url.split('.').length === 1 ? request.url : 'call');
-                this.req[this.urlGuid] = request;
-            } else if (this.req[this.urlGuid]) {
+                this.req[request.urlGuid] = request;
+            } else if (this.req[request.urlGuid]) {
                 return Promise.reject('重复请求');
             }  
             NProgress.start();
@@ -57,7 +56,7 @@ class Interceptor {
     response () {
         axios.interceptors.response.use((response) => {
             NProgress.done();
-            delete this.req[this.urlGuid]; // 防止同个链接连续请求
+            delete this.req[response.config.urlGuid]; // 防止同个链接连续请求
             if (response.data) {
                 if (response.data.code === 'SUCCESS' || response.data.code === '0') {
                     return response.data;
