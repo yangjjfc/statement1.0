@@ -137,7 +137,7 @@ export const Validate = {
             callback(new Error('不能是纯数字'));
         }
         if (this.send_status && value) {
-            await this.Http.post(Validate.URL.isExistUserByLoginAccountForWeb, {
+            await this.Http(Validate.URL.isExistUserByLoginAccountForWeb, {
                 loginAccount: this.msgx[rule.field]
             }).then((re) => {
                 if (re.data) {
@@ -175,7 +175,7 @@ export const Validate = {
     // 手机
     validatePhone: async function (rule, value, callback) {
         if (this.send_status && value.length > 0) {
-            await this.Http.post(Validate.URL.ISEXIST, {
+            await this.Http(Validate.URL.ISEXIST, {
                 params: this.msgx[rule.field]
             }).then((re) => {
                 if (re.data) {
@@ -198,7 +198,7 @@ export const Validate = {
     // 邮箱
     validateEmail: async function (rule, value, callback) {
         if (this.send_status && value.length > 0) {
-            await this.Http.post(Validate.URL.EXISTEMAIL, {
+            await this.Http(Validate.URL.EXISTEMAIL, {
                 params: this.msgx[rule.field]
             }).then((re) => {
                 if (re.data) {

@@ -30,6 +30,7 @@ export default {
 </script> 
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+	@import '../../style/mixin.scss';
 	.app-wrapper {
 		position: relative;
 		height: 100%;
@@ -45,10 +46,10 @@ export default {
 		}
 		.sidebar-container {
 			transition: width 0.28s ease-out;
-			width: 180px;
+			width: $menuWidth;
 			height: 100%;
 			position: fixed;
-			top: 50px;
+			top: $menuHeight;
 			bottom: 0;
 			left: 0;
 			z-index: 1001;
@@ -65,8 +66,8 @@ export default {
 		.main-container {
 			transition: left 0.28s ease-out;
 			position: absolute;
-			top:50px;
-			left:180px;
+			top:$menuHeight;
+			left:$menuWidth;
 			bottom:0;
 			right: 0;
 			overflow-y:auto;

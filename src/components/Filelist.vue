@@ -12,11 +12,10 @@
     </ul>
 </template>
 <script>
-import { changeImgSize, getFileType } from '@/services/global.common'; // 文件格式
-import CONFIG from '../config/app.config'; // 配置
+import { changeImgSize, getFileType } from '~/global.common'; // 文件格式
 import pdf from '@/assets/images/pdf.png'; // daf
 import defaultImg from '@/assets/images/noimage.png';
-import '../assets/directive/boxer.js'; // jq boxer指令
+import '@/utils/directive/boxer.js'; // jq boxer指令
 export default {
     data () {
         return {
@@ -73,7 +72,7 @@ export default {
             let thumbnail;
             switch (getFileType(item)) {
             case 'image':
-                thumbnail = CONFIG.IMAGE_DOWNLOAD + changeImgSize(item);
+                thumbnail = process.env.IMAGE_DOWNLOAD + changeImgSize(item);
                 break;
             case 'pdf':
                 thumbnail = pdf;
@@ -87,7 +86,7 @@ export default {
             }
             return {
                 thumbnail: thumbnail,
-                fullUrl: CONFIG.IMAGE_DOWNLOAD + item,
+                fullUrl: process.env.IMAGE_DOWNLOAD + item,
                 url: item
             };
         }

@@ -1,5 +1,5 @@
 $menuWidth: 180px;
-$menuHeight: 50px;
+$menuHeight: 60px;
 @mixin colorbody{
     height: 100%; 
     width: 100%;
@@ -28,11 +28,11 @@ $menuHeight: 50px;
 }
 
 @mixin bg-linear-gradients{
-  background: rgba(31,153,239,0.9);
-  background: -webkit-linear-gradient(left, #3e7bd9, #1bb2f9);
-  background: -moz-linear-gradient(left, #3e7bd9, #1bb2f9);
-  background: -o-linear-gradient(left, #3e7bd9, #1bb2f9);
-  background: linear-gradient(to right, #3e7bd9, #1bb2f9); 
+  background: rgba(44,156,243,0.9);
+  background: -webkit-linear-gradient(left, #2c9cea, #1bb2f9);
+  background: -moz-linear-gradient(left, #2c9cea, #1bb2f9);
+  background: -o-linear-gradient(left, #2c9cea, #1bb2f9);
+  background: linear-gradient(to right, #2c9cea, #1bb2f9); 
  
 }
 

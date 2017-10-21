@@ -13,7 +13,7 @@
 </template>
 <script>
 import $ from 'jquery';
-import { changeImgSize, getFileType } from '@/services/global.common'; // 文件格式
+import { changeImgSize, getFileType } from '~/global.common'; // 文件格式
 import { mapGetters } from 'vuex';
 import pdf from '@/assets/images/pdf.png'; // daf
 export default {

@@ -5,7 +5,7 @@
     </div>
 </template>
 <script type="text/javascript">
-import adderss from '@/components/address/address';
+import adderss from './address.vue';
 import REGION_DATA from 'china-area-data';
 export default {
     name: 'regionPicker',
