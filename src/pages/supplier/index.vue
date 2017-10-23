@@ -41,29 +41,29 @@
                      <el-table-column prop="supplierPhone" label="联系电话" width="120" align="center" >
                     </el-table-column>
                      <el-table-column    label="客户数量" width="100" align="center" >
-                         <template scope="scope">
+                         <template slot-scope="scope">
                               <router-link :to="{ name: 'supCustomer', query: { no: scope.row.supplierNo,name:scope.row.supplierName }}" v-if="scope.row.customerNum>0"><span class="blue">{{scope.row.customerNum}}</span></router-link>
                               <span v-html="scope.row.customerNum" v-else></span>
                         </template>
                     </el-table-column>
                      <el-table-column   label="产品数量" width="100" align="center" >
-                         <template scope="scope">
+                         <template slot-scope="scope">
                                <router-link :to="{ name: 'supProduct', query: { no: scope.row.supplierNo}}" v-if="scope.row.productNum>0"><span class="blue">{{scope.row.productNum}}</span></router-link>
                               <span v-html="scope.row.productNum" v-else></span>
                         </template>
                     </el-table-column>
                      <el-table-column prop="erps" label="ERP" width="80" align="center" >
-                         <template scope="scope">
+                         <template slot-scope="scope">
                               <span v-html="scope.row.erps"></span>
                         </template>
                     </el-table-column>
                      <el-table-column  label="审核状态" width="100" align="center" >
-                         <template scope="scope">
+                         <template slot-scope="scope">
                               <span v-html="scope.row.statusx"></span>
                         </template>
                     </el-table-column>
                     <el-table-column label="操作"  width="300" >
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-button size="mini" type="link"  @click="detailSuppiler(scope.row.supplierNo,'detail')">详情</el-button>
                             <el-button size="mini" type="link"  @click="detailSuppiler(scope.row.supplierNo,'audit')" v-if="scope.row.status =='2'">审核</el-button>
                             <el-button size="mini" type="link"  @click="detailLog(scope.row.supplierNo)" >日志</el-button>

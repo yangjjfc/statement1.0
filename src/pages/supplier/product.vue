@@ -28,14 +28,14 @@
                     <el-table-column prop="index" label="序号" width="70" align="center">
                     </el-table-column>
                     <el-table-column  label="产品编号/通用名称" min-width="150" >
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <span class="blue">{{scope.row.productNo}}</span>
                             <br/>
                             <span>{{scope.row.genericName}}</span>
                         </template>
                     </el-table-column>
                     <el-table-column label="注册证号/产品名称" min-width="150" align="">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <span class="blue">{{scope.row.registNo}}
                             </span>
                             <br/>
@@ -55,7 +55,7 @@
                     <el-table-column prop="unit" label="单位" width="80" align="center">
                     </el-table-column>
                     <el-table-column label="产品状态" width="100" align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <div v-html="scope.row.statusx"></div>
                         </template>
                     </el-table-column>

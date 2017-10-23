@@ -18,7 +18,7 @@
             </el-form-item>
             </div>
             <el-form-item label="证件图片" prop="imgs" class="img-form">
-                <template scope="scope" >
+                <template slot-scope="scope" >
                     <el-input placeholder="证件图片" size="small" v-model="msg.imgs" v-show="false"></el-input>
                     <file-upload :files.sync="msg.imglist" :max="1" :classx="msg.class" @getUrl="getUrl"></file-upload>
                     <span class="tips">支持格式 : png. jpg. bmp. gif. pdf , 大小不超过5MB</span>

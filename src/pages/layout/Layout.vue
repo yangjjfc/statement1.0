@@ -37,11 +37,11 @@ export default {
 		width: 100%;
 		&.hideSidebar {
 			.sidebar-container{
-				width:36px;
+				width:$menu-min-Width;
 				overflow: inherit;
 			}
 			.main-container {
-				left: 36px;
+				left: $menu-min-Width;
 			}
 		}
 		.sidebar-container {

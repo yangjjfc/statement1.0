@@ -33,7 +33,7 @@
                      <el-table-column  prop="applyTime" label="申请时间" width="170" align="center" >
                     </el-table-column>
                     <el-table-column label="客户状态"  width="100" align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <div v-html="scope.row.statusx"></div>
                         </template>
                     </el-table-column>

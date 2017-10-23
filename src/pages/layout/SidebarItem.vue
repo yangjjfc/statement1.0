@@ -7,6 +7,7 @@
       </li>
       <router-link v-if="!item.hidden&&item.noDropdown&&item.children.length>0" :to="item.path+'/'+item.children[0].path">
         <el-menu-item :index="item.path+'/'+item.children[0].path" class='submenu-title-noDropdown'>
+          <em></em>
           <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg>
           <span>{{item.children[0].name}}</span>
         </el-menu-item>
@@ -14,6 +15,7 @@
   
       <el-submenu :index="item.name" v-if="!item.noDropdown&&!item.hidden&&!item.virtual">
         <template slot="title">
+          <em></em>
           <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg>
           <span>{{item.name}}</span>
         </template>

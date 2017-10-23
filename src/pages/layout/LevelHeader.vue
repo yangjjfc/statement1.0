@@ -4,17 +4,15 @@
             <el-col :span="10" class="logo ">
                 {{sysName}}
             </el-col>
-            <el-col :span="4" class="userinfo">
-                <el-dropdown trigger="hover">
-                    <span class="el-dropdown-link userinfo-inner">
-                        <img :src="sysUserAvatar" /> {{sysUserName}}
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>我的消息</el-dropdown-item>
-                        <el-dropdown-item>设置</el-dropdown-item>
-                        <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
+            <el-col :span="10" class="userinfo">
+                <span class="userinfo-inner">
+                    欢迎您 ! {{sysUserName}}
+                </span>
+                <el-badge :value="100" class="item" :max="99" >
+                    <icon-svg icon-class="weibiaoti-" @click.native="logout" class="icon"></icon-svg>
+                </el-badge>
+                <icon-svg icon-class="question" @click.native="logout" class="icon"></icon-svg>
+                <icon-svg icon-class="guanji1" @click.native="logout" class="icon"></icon-svg>
             </el-col>
         </el-col>
     </el-row>
@@ -26,8 +24,7 @@ export default {
     data () {
         return {
             sysName: '云供应链平台端', // title
-            sysUserName: '', // 客户名称
-            sysUserAvatar: ''
+            sysUserName: '' // 客户名称
         };
     },
     methods: {
@@ -47,9 +44,8 @@ export default {
             });
         }
     },
-    mounted () { 
+    mounted () {
         this.sysUserName = this.$store.getters.userInfo.userName;
-        this.sysUserAvatar = 'http://dfs.test.cloudyigou.com/dfs/s2/M00/25/39/rB4r9Vk3mwWAdctcAAFf5pjzdHU212_100x100.jpg';
     }
 
 };
@@ -65,18 +61,24 @@ export default {
     @include bg-linear-gradients;
     .userinfo {
         text-align: right;
-        padding-right: 35px;
+        padding-right: 20px;
         float: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .el-badge__content.is-fixed{
+            transform: translateY(-50%) translateX(100%) scale(0.8);
+        }
+        .icon {
+            margin-left: 25px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+        }
         .userinfo-inner {
             cursor: pointer;
             color: #fff;
-            img {
-                width: 30px;
-                height: 30px;
-                border-radius: 20px;
-                margin: 10px 0px 10px 10px;
-                float: right;
-            }
         }
     }
     .logo {

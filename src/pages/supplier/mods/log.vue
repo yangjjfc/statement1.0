@@ -12,7 +12,7 @@
                             <el-table-column label="审核人"  prop="operatorName" align="center" width="150">
                             </el-table-column>
                             <el-table-column label="操作类型"  prop="seconds" align="center" width="100">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <span v-if="scope.row.operType == 'audit_success'" class="green">审核通过</span>
                                     <span v-else class="red">审核不通过</span>
                                 </template>

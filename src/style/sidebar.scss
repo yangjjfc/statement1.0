@@ -1,4 +1,71 @@
 // 侧边栏
+// 菜单栏css重置
+.el-menu--dark{
+     background: #fff;
+    .el-menu-item{
+        border-bottom:#eff3f7 solid 1px;
+        color:#6e96b2;
+        &:hover{
+             background: #fff;
+              color:#2c9cea;
+        }
+        &.is-active{
+            color: #2c9cea !important;
+            background:#fff;
+            position: relative;
+            em{
+                position: absolute;
+                top:0;
+                left: 0;
+                display: block;
+                background: #2c9cea;
+                width: 2px;
+                height: 100%;
+            }
+            .submenu-iconfont{
+                color: #fff !important;
+            }
+        }
+    }
+    .el-submenu__title{
+        color:#6e96b2;
+         &:hover{
+             background: #f9fafc;
+              color:#2c9cea;
+        }
+    }
+    .el-submenu{
+        border-bottom:#eff3f7 solid 1px;
+        &.is-active{
+            color: #2c9cea !important;
+            background:#fff;
+            position: relative;
+            em{
+                position: absolute;
+                top:0;
+                left: 0;
+                display: block;
+                background: #2c9cea;
+                width: 2px;
+                height: 100%;
+            }
+            .submenu-iconfont{
+                color: #fff !important;
+            }
+            .el-submenu__title{
+                color:#2c9cea;
+            }
+        }
+        .el-menu{
+            background-color: #f9fafc;
+            .el-menu-item{
+                &:hover{
+                    background: #f9fafc;
+                }
+            }
+        }
+    }
+}
 .sidebar-container>.el-menu {
   width: 100%!important;
   min-height: 100%;
@@ -7,19 +74,39 @@
 .sidebar-container .svg-icon {
   margin-right: 16px;
 }
-
+.hideSidebar {
+  .sidebar-container .svg-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: -0.36em;
+  }
+}
 .hideSidebar .el-submenu>.el-submenu__title,
 .hideSidebar .submenu-title-noDropdown {
   padding-left: 10px!important;
 }
 
-.hideSidebar .submenu-title-noDropdown span,
-.hideSidebar .el-submenu>.el-submenu__title>span {
-  height: 0;
-  width: 0;
-  overflow: hidden;
-  visibility: hidden;
-  display: inline-block;
+.hideSidebar .submenu-title-noDropdown ,
+.hideSidebar .el-submenu>.el-submenu__title {
+  span{
+    color:#6e96b2;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+  }
+}
+.hideSidebar .submenu-title-noDropdown.is-active ,
+.hideSidebar .el-submenu.is-active>.el-submenu__title {
+  span{
+    color:#2c9cea;
+  }
+}
+.hideSidebar .el-submenu .el-menu{
+    background: #fff;
+    color:#6e96b2;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
 }
 
 .hideSidebar .nest-menu .el-submenu__title {
@@ -64,8 +151,9 @@
       text-align: left;
       text-indent: 20px;
       top: 0px;
-      background-color: #1f2d3d;
       opacity: 1;
+      background-color:#fff;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
     }
   }
 }

@@ -10,7 +10,7 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item label="公司名称" prop="enterpriseName">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input placeholder="公司名称" v-model.trim="msgx.enterpriseName" :readonly="msgx.enterprise.isEdit" @click.native="getNcList" size="small"></el-input>
                             <query-list @change="getNcList" :keyWords.sync="search.keywords" :showx.sync="msgx.enterprise.showNc" :pageSize="search.pageSize" :pageIndex.sync="search.pageIndex" :total="search.total">
                                 <ul slot="quire_content">
@@ -31,7 +31,7 @@
                     </el-form-item>
     
                     <el-form-item label="注册地址" prop="registAddr">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <region-picker :region.sync="msgx.address"></region-picker>
                             <el-input placeholder="注册地址" v-model.trim="msgx.registAddr" size="small"></el-input>
                         </template>
