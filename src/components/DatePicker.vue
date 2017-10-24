@@ -27,8 +27,6 @@ export default {
         return {
             pickerOptions_sta: {}, // 开始时间
             pickerOptions_end: {}, // 结束时间
-            value_sta: '', // 开始值
-            value_end: '', // 结束值
             disabledDate_sta: '', // 开始禁用区域
             disabledDate_end: '' // 结束禁用区域
         };
@@ -53,19 +51,25 @@ export default {
                 return 'date';
             }
         },
-        startTime: [String, Number],
-        endTime: [String, Number],
+        startTime: [String, Number, Date],
+        endTime: [String, Number, Date],
         classx: String // 自定义class
     },
     computed: {
-        value_sta: {
-            get () {
+        value_sta: { // 开始值
+            get () { 
                 return this.startTime;
+            }, 
+            set (val) {
+                this.$emit('update:startTime', val);
             }
         },
-        value_end: {
+        value_end: {  // 结束值
             get () {
                 return this.endTime;
+            },
+            set (val) {
+                this.$emit('update:endTime', val);
             }
         }
     },
@@ -94,13 +98,13 @@ export default {
         // 开始
         dateChangeTime_sta (val) {
             this.disabledDate_end = this.$refs.startTime.value;
-            this.$emit('update:startTime', val);
+            this.value_sta = val;
             this.$emit('changeTime_sta', val);
         },
         // 结束
         dateChangeTime_end (val) {
             this.disabledDate_sta = this.$refs.endTime.value;
-            this.$emit('update:endTime', val);
+            this.value_end = val;
             this.$emit('changeTime_end', val);
         }
     }
@@ -113,7 +117,6 @@ export default {
 }
 .editTime{
     width:100%;
-   
 }
 .long{
      position: absolute;

@@ -45,6 +45,17 @@ export const asyncRouterMap = [
             { path: 'customer', component: _import('supplier/index'), name: '产品列表', hidden: true }
         ]
     },
+    {
+        path: '/inventory',
+        component: Layout,
+        redirect: '/inventory/index',
+        name: '收支明细',
+        icon: 'index',
+        noDropdown: true,
+        children: [
+            { path: 'index', component: _import('inventory/index'), name: '收支明细' }
+        ]
+    },
     // {
     //     path: '/hospital',
     //     component: Layout,

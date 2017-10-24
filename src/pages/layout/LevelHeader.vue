@@ -8,11 +8,12 @@
                 <span class="userinfo-inner">
                     欢迎您 ! {{sysUserName}}
                 </span>
+                <screenfull></screenfull>
                 <el-badge :value="100" class="item" :max="99" >
-                    <icon-svg icon-class="weibiaoti-" @click.native="logout" class="icon"></icon-svg>
+                    <icon-svg icon-class="weibiaoti-" @click.native="logout" class="icons"></icon-svg>
                 </el-badge>
-                <icon-svg icon-class="question" @click.native="logout" class="icon"></icon-svg>
-                <icon-svg icon-class="guanji1" @click.native="logout" class="icon"></icon-svg>
+                <icon-svg icon-class="question" @click.native="logout" class="icons"></icon-svg>
+                <icon-svg icon-class="guanji1" @click.native="logout" class="icons"></icon-svg>
             </el-col>
         </el-col>
     </el-row>
@@ -20,10 +21,11 @@
 
 <script>
 import { mapActions } from 'vuex';
+import Screenfull from '@/components/Screenfull'; 
 export default {
     data () {
         return {
-            sysName: '云供应链平台端', // title
+            sysName: '报表系统', // title
             sysUserName: '' // 客户名称
         };
     },
@@ -46,6 +48,9 @@ export default {
     },
     mounted () {
         this.sysUserName = this.$store.getters.userInfo.userName;
+    },
+    components: {
+        Screenfull
     }
 
 };
@@ -69,7 +74,7 @@ export default {
         .el-badge__content.is-fixed{
             transform: translateY(-50%) translateX(100%) scale(0.8);
         }
-        .icon {
+        .icons {
             margin-left: 25px;
             cursor: pointer;
             width: 20px;
