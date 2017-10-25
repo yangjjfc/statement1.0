@@ -21,7 +21,7 @@ export default {
     },
     // 需要传的参数
     props: {
-        value: String,
+        value: [String],
         classx: {
             type: [String],
             required: true

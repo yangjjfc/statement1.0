@@ -19,7 +19,7 @@
                         <datePicker :startTime.sync='from.startTime' :endTime.sync='from.endTime' classx="w140" type="month"></datePicker>
                     </el-form-item>
                     <el-form-item>
-                        <el-input placeholder="请输入物资编号/ERP编码" v-model.trim="showNum"    @keyup.native.enter="getList(1)" class="w200" size="small"></el-input>
+                        <el-input placeholder="请输入物资编号/ERP编码" v-model.trim="from.no"    @keyup.native.enter="getList(1)" class="w200" size="small"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="getList(1)" size="small">筛选</el-button>
@@ -36,54 +36,54 @@
                 </el-form>
             </el-col>
             <el-col :span="24" class="toolbar">
-                <el-table :data="tableDate" border style="width: 100%" border>
-                    <el-table-column prop="date" label="序号" width="80"></el-table-column>
-                    <el-table-column prop="date" label="医院名称" width="150"></el-table-column>
-                    <el-table-column prop="date" label="物资编码" width="150"></el-table-column>
-                    <el-table-column prop="date" label="ERP编码" width="150"></el-table-column>
-                    <el-table-column prop="date" label="物资名称" width="150"></el-table-column>
-                    <el-table-column prop="date" label="规格型号" width="150"></el-table-column>
-                    <el-table-column prop="date" label="单位" width="150"></el-table-column>
-                    <el-table-column prop="date" label="品牌" width="150"></el-table-column>
-                    <el-table-column label="期初结存" align="center" >
-                        <el-table-column prop="name" label="数量" width="80" align="center"  v-if="showMen" ></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center" v-if="showMen" ></el-table-column>
+                <el-table :data="tableDate" border style="width: 100%" border v-if="isshow">
+                    <el-table-column prop="date" label="序号" width="80" ></el-table-column>
+                    <el-table-column prop="date" label="医院名称" min-width="150" ></el-table-column>
+                    <el-table-column prop="date" label="物资编码" min-width="150" ></el-table-column>
+                    <el-table-column prop="date" label="ERP编码" min-width="150" ></el-table-column>
+                    <el-table-column prop="date" label="物资名称" min-width="150"></el-table-column>
+                    <el-table-column prop="date" label="规格型号" min-width="150"></el-table-column>
+                    <el-table-column prop="date" label="单位" min-width="150" ></el-table-column>
+                    <el-table-column prop="date" label="品牌" min-width="150" ></el-table-column>
+                    <el-table-column label="期初结存" align="center"  v-if="showNum||showMen">
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="采购入库" align="center">
-                       <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="采购入库" align="center" min-width="160" v-if="showNum||showMen">
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="盘盈入库" align="center">
-                        <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="盘盈入库" align="center" min-width="160" v-if="showNum||showMen">
+                         <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="其他入库" align="center">
-                        <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="其他入库" align="center" min-width="160" v-if="showNum||showMen">
+                         <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="入库合计" align="center">
-                        <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="入库合计" align="center" min-width="160" v-if="showNum||showMen"> 
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="领用出库" align="center">
-                        <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="领用出库" align="center" min-width="160" v-if="showNum||showMen">
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="盘亏出库" align="center">
-                       <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="盘亏出库" align="center" min-width="160" v-if="showNum||showMen">
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="其他出库" align="center">
-                       <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="其他出库" align="center" min-width="160" v-if="showNum||showMen">
+                       <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="出库合计" align="center">
-                       <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="出库合计" align="center" min-width="160" v-if="showNum||showMen">
+                        <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
-                    <el-table-column label="期末结存" align="center">
-                        <el-table-column prop="name" label="数量" width="80" align="center"></el-table-column>
-                        <el-table-column prop="name" label="金额" width="80" align="center"></el-table-column>
+                    <el-table-column label="期末结存" align="center" min-width="160" v-if="showNum||showMen">
+                         <el-table-column prop="name" label="数量"  align="center"  v-if="showNum" ></el-table-column>
+                        <el-table-column prop="name" label="金额"  align="center" v-if="showMen" ></el-table-column>
                     </el-table-column>
                 </el-table>
             </el-col>
@@ -131,7 +131,8 @@ export default {
             }, {
                 name: 12312312
             }],
-            checkList: [],
+            isshow: true,
+            checkList: ['数量', '金额'],
             total: 0,
             pageSize: 20,
             pageIndex: 1,
@@ -160,24 +161,24 @@ export default {
     },
     computed: {
         showNum () {
-            if (this.checkList.length) {
-                return this.checkList.includes('数量');
-            } else {
-                return true;
-            }
+            this.isshow = false;
+            setTimeout(() => {
+                this.isshow = true;
+            }, 200); // issues element table 暂时无法支持动态表格
+          
+            return this.checkList.includes('数量');
         },
         showMen () {
-            if (this.checkList.length) {
-                return this.checkList.includes('金额');
-            } else {
-                return true;
-            }
+            this.isshow = false;
+            setTimeout(() => {
+                this.isshow = true;
+            }, 200); // issues element table 暂时无法支持动态表格
+            return this.checkList.includes('金额');
         }
     }, 
     methods: {
         // 获取列表
         getList () {
-            console.log(123);
             this.showList = true;
         },
         // 重置

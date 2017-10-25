@@ -6,10 +6,20 @@
 ## 相关技术和组件
 ```
 element-ui(1.46), es6, vue, vuex, vue-router, axios
-vue2.5版本更新更新,后期会切换改版本(2017/10/17)
+vue2.5版本已使用
 
 ```
-
+## Issues
+```
+element table还无法支持动态列的展示,table上的v-show也是不支持,可用v-if来代替,
+动态列的方法
+table上加v-if 去重新渲染
+ this.isshow = false;
+setTimeout(() => {
+    this.isshow = true;
+}, 200); //issues element table 暂时无法支持动态表格
+https://github.com/ElemeFE/element/issues/4043
+```
 
 ## 发布
 
