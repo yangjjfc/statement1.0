@@ -16,7 +16,7 @@
                     </div>
                     <div class="verify">
                         <div class="verifyimg">
-                            <img id="imageCode" class="textbox" src="" :src="verifyImg" width="80" height="40" alt="验证码" title="点击刷新" />
+                            <img id="imageCode" class="textbox"  :src="verifyImg" width="80" height="40" alt="验证码" title="点击刷新" />
                             <a @click="refreshCode()" href="javascript:void(0)">换一张？</a>
                         </div>
                         <div class="verifycode">

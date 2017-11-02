@@ -1,10 +1,19 @@
 //基本的dailog弹框组件
 <template>
     <section>
-        <el-dialog :title="title" :visible.sync="shows" :size="size" :custom-class="classx"  :close-on-click-modal="close" :close-on-press-escape="close"  :before-close="cancel">
+        <el-dialog  :title="title" 
+                    :visible.sync="shows"
+                    :fullscreen="fullscreen" 
+                    :width="width" 
+                    :custom-class="classx" 
+                    :modal="modal" 
+                    :center="center"
+                    :close-on-click-modal="close" 
+                    :close-on-press-escape="close"  
+                    :before-close="cancel">
             <slot name='content'></slot>
             <span slot="footer" class="dialog-footer" >
-                <el-button type="primary" @click="ok" v-if="!hide" size="small">确 定</el-button>
+                <el-button type="primary" @click="submit" v-if="!hide" size="small">确定</el-button>
                 <el-button @click.sync="cancel" size="small">关闭</el-button>
             </span>
         </el-dialog>
@@ -20,28 +29,34 @@ export default {
         };
     },
     props: {
+        modal: { // 是否显示遮罩
+            type: Boolean,
+            default: true
+        },
         show: { // 是否显示dailog
             type: Boolean,
             required: true,
-            default () {
-                return false;
-            }
+            default: false
+        }, 
+        fullscreen: { // 是否为全屏 Dialog
+            type: Boolean,
+            default: false
         },
         title: {
             type: String,
             required: true
         },
-        size: { // dailog大小
+        width: { // dailog大小
             type: String,
-            default () {
-                return 'small';
-            }
+            default: '50%'
         },
         close: { // 禁用某些操作,可配置
             type: Boolean,
-            default () {
-                return true;
-            }
+            default: true
+        },
+        center: {
+            type: Boolean,
+            default: false
         },
         classx: String, // 自定义class
         hide: [String, Boolean] // 隐藏按钮
@@ -58,13 +73,12 @@ export default {
     },
     methods: {
         // 确认事件
-        ok () {
-            this.$emit('ok');
+        submit () {
+            this.$emit('submit');
         },
         // 取消事件
         cancel () {
             this.shows = false;
-            // this.$emit('update:show', false); // 更新父组件shows
             this.$emit('reset');
         }
     }
@@ -74,6 +88,35 @@ export default {
 </script>
 
 <style  lang="scss" rel="stylesheet/scss">
+.dialog-fade-enter-active {
+    animation: dialog-fade-in 1s;
+  }
+
+  .dialog-fade-leave-active {
+    animation: dialog-fade-out .3s;
+  }
+
+  @keyframes dialog-fade-in {
+    0% {
+      transform: translate3d(100%, -20px, 0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes dialog-fade-out {
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(0, -20px, 0);
+      opacity: 0;
+    }
+  }
   .el-dialog{
       min-width: 560px;
       overflow: hidden;

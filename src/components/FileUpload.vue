@@ -1,7 +1,21 @@
 <template>
     <div ref="img-upload">
-        <el-upload :action="action" :list-type="type" :headers="headers" :on-success="success" :show-file-list="show" class="upload-demo" :on-error="errors" :on-preview="review" 
-        :before-upload="beforeUpload" :disabled="disabled" :multiple="multiple" :drag="drag" :file-list="fileLists" :on-remove="remove" :class="classx">
+        <el-upload 
+                :action="action" 
+                :headers="headers" 
+                :list-type="type" 
+                :on-success="success" 
+                :show-file-list="show" 
+                class="upload-demo" 
+                :on-error="errors" 
+                :on-preview="review" 
+                :before-upload="beforeUpload" 
+                :disabled="disabled" 
+                :multiple="multiple" 
+                :drag="drag" 
+                :file-list="fileLists" 
+                :on-remove="remove" 
+                :class="classx">
             <slot name='imgs'></slot>
             <el-button size="small" type="primary" v-if="!show">点击上传</el-button>
             <i class="el-icon-plus" v-else></i>
@@ -47,15 +61,11 @@ export default {
         }, 
         type: { // 显示类型
             type: String,
-            default () {
-                return 'picture-card';
-            }
+            default: 'picture-card'
         },
         show: {   // 是否显示上传图片 默认显示
             type: Boolean,
-            default () {
-                return true;
-            }
+            default: true
         }
     },
     

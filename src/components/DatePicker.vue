@@ -1,20 +1,32 @@
 <template>
     <div class="block">
         <div >
-            <el-date-picker v-model="value_sta" 
-            :type="type" placeholder="开始日期" 
-            :picker-options="pickerOptions_sta" 
-            :readonly="readonly" :editable="editable" 
-            @change="dateChangeTime_sta"
-            ref="startTime" size="small" :class="classx">
+            <el-date-picker 
+                    v-model="value_sta" 
+                    :type="type" 
+                    placeholder="开始日期" 
+                    :picker-options="pickerOptions_sta" 
+                    :readonly="readonly" 
+                    :editable="editable" 
+                    @change="dateChangeTime_sta"
+                    ref="startTime" 
+                    size="small" 
+                    popper-class="popper-class"
+                    :class="classx">
             </el-date-picker>
             <slot name="between"></slot>
-            <el-date-picker v-model="value_end" 
-            :type="type" placeholder="结束日期" 
-            :picker-options="pickerOptions_end" 
-            :readonly="readonly" :editable="editable" 
-            @change="dateChangeTime_end"
-            ref="endTime" size="small" :class="classx">
+            <el-date-picker 
+                    v-model="value_end" 
+                    :type="type" 
+                    placeholder="结束日期" 
+                    :picker-options="pickerOptions_end" 
+                    :readonly="readonly" 
+                    :editable="editable" 
+                    @change="dateChangeTime_end"
+                    ref="endTime" 
+                    popper-class="popper-class"
+                    size="small" 
+                    :class="classx">
             </el-date-picker>
         </div>
     </div>
@@ -32,28 +44,22 @@ export default {
         };
     },
     props: {
-        placeholder: {},
         readonly: { // 只读
             type: Boolean,
-            default () {
-                return false;
-            }
+            default: false
         },
         editable: { // 是否可编辑
             type: Boolean,
-            default () {
-                return false;
-            }
+            default: false
         },
         type: { // 日期类型
             type: String,
-            default () {
-                return 'date';
-            }
+            default: 'date'
         },
         startTime: [String, Number, Date],
         endTime: [String, Number, Date],
-        classx: String // 自定义class
+        classx: String, // 自定义class
+        'popper-class': String // DatePicker 下拉框的类名
     },
     computed: {
         value_sta: { // 开始值
@@ -76,7 +82,7 @@ export default {
     watch: {
         // 开始禁用区域
         disabledDate_sta (val) {
-            if (!val) {
+            if (!val) { // 当结束日期清空时给个虚拟 hack
                 val = '1495900800000000000000000000';
             } 
             this.pickerOptions_sta = {
@@ -119,7 +125,7 @@ export default {
     width:100%;
 }
 .long{
-     position: absolute;
+    position: absolute;
     top: 7px;
     right: -60px;
 }

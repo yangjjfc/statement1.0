@@ -1,6 +1,12 @@
 /**分页插件*/
 <template>
- <el-pagination :total="total" :page-size="pageSize" @size-change="changeSize" :current-page="index" @current-change="changePage" layout="total, sizes, prev, pager, next, jumper"></el-pagination>
+    <el-pagination  :total="total" 
+                    :page-size="pageSize" 
+                    @size-change="changeSize" 
+                    :current-page="index" 
+                    @current-change="changePage" 
+                    layout="total, sizes, prev, pager, next, jumper">
+    </el-pagination>
 </template>
 <script>
 export default {
@@ -12,7 +18,7 @@ export default {
             flag: true// 标记,避免重复更新
         };
     },
-  // 需要传的参数
+    // 需要传的参数
     props: {
         total: { // 总页数
             type: [String, Number],

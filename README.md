@@ -1,11 +1,11 @@
-# statement1.0
+# erp2.0
 
-> statement
+> erp
 
 
 ## 相关技术和组件
 ```
-element-ui(1.46), es6, vue, vuex, vue-router, axios
+element-ui(2.01), es6, vue, vuex, vue-router, axios
 vue2.5版本已使用
 
 ```

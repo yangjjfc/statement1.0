@@ -31,31 +31,7 @@ export const asyncRouterMap = [
         icon: 'index',
         noDropdown: true,
         children: [{ path: 'index', component: _import('index/index'), name: '首页' }]
-    }, 
-    {
-        path: '/supplier',
-        component: Layout,
-        redirect: '/supplier/index',
-        name: '供应商管理',
-        icon: 'index',
-        noDropdown: true,
-        children: [
-            { path: 'index', component: _import('supplier/index'), name: '供应商管理' },
-            { path: 'product', component: _import('supplier/index'), name: '客户列表', hidden: true },
-            { path: 'customer', component: _import('supplier/index'), name: '产品列表', hidden: true }
-        ]
-    },
-    {
-        path: '/inventory',
-        component: Layout,
-        redirect: '/inventory/index',
-        name: '收支明细',
-        icon: 'index',
-        noDropdown: true,
-        children: [
-            { path: 'index', component: _import('inventory/index'), name: '收支明细' }
-        ]
-    },
+    }
     // {
     //     path: '/hospital',
     //     component: Layout,
@@ -108,20 +84,5 @@ export const asyncRouterMap = [
     //         { path: 'index', component: _import('supplier/index'), name: '订单管理' }
     //     ]
     // },       
-    {
-        path: '/chart',
-        component: Layout,
-        redirect: 'noredirect',
-        name: '表格',
-        icon: 'lock',
-        children: [{
-            path: 'supplierchart',
-            component: _import('chart/supplier/index'),
-            name: '供应商销售'
-        }, {
-            path: 'hospitalchart',
-            component: _import('chart/supplier/index'),
-            name: '客户销售'
-        }]
-    }
+   
 ]; 
