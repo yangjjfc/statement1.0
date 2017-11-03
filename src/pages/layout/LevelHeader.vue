@@ -25,7 +25,7 @@ import Screenfull from '@/components/Screenfull';
 export default {
     data () {
         return {
-            sysName: '报表系统', // title
+            sysName: 'ERP', // title
             sysUserName: '' // 客户名称
         };
     },
