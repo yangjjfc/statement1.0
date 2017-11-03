@@ -1,6 +1,6 @@
 // 侧边栏
 // 菜单栏css重置
-.el-menu--dark{
+.sidebar-container{
      background: #fff;
     .el-menu-item{
         border-bottom:#eff3f7 solid 1px;
@@ -46,7 +46,7 @@
                 left: 0;
                 display: block;
                 background: #2c9cea;
-                width: 3px;
+                width: 2px;
                 height: 100%;
             }
             .submenu-iconfont{
